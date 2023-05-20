@@ -70,6 +70,9 @@ jobs:
         # push it to ECR so that it can
         # be deployed to ECS.
         docker compose build
+        docker tag backend:1.0.0 $ECR_REGISTRY/backend:1.0.0
+        docker tag frontend:1.0.0 $ECR_REGISTRY/frontend:1.0.0
+        docker tag db:1.0.0 $ECR_REGISTRY/db:1.0.0
         docker push $ECR_REGISTRY/backend:1.0.0
         docker push $ECR_REGISTRY/frontend:1.0.0
         docker push $ECR_REGISTRY/db:1.0.0
