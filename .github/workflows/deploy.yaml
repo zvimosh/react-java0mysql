@@ -74,3 +74,4 @@ jobs:
         docker push $ECR_REGISTRY/react-frontend:1.0.0
         #echo "$GITHUB_OUTPUT"
 
+
