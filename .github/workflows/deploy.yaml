@@ -30,7 +30,7 @@ name: Deploy-ECR
 
 on:
   push:
-    branches: ["dev"]
+    branches: ["main"]
   #pull_request:
   #  branches: [ "main" ]
 
@@ -70,9 +70,8 @@ jobs:
         # push it to ECR so that it can
         # be deployed to ECS.
         docker compose build
-        docker tag docker.io/library/backend:1.0.0 $ECR_REGISTRY/backend:1.0.0
-        docker tag docker.io/library/frontend:1.0.0 $ECR_REGISTRY/frontend:1.0.0
-        docker push $ECR_REGISTRY/backend:1.0.0
-        docker push $ECR_REGISTRY/frontend:1.0.0
-        echo "$GITHUB_OUTPUT"
+        docker push $ECR_REGISTRY/react-backend:1.0.0
+        docker push $ECR_REGISTRY/react-frontend:1.0.0
+        #echo "$GITHUB_OUTPUT"
+
 
