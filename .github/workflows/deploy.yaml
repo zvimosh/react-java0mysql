@@ -70,7 +70,7 @@ jobs:
         # push it to ECR so that it can
         # be deployed to ECS.
         docker compose build
-        docker push $ECR_REGISTRY/backend:1.0.0
-        docker push $ECR_REGISTRY/frontend:1.0.0
-        echo "$GITHUB_OUTPUT"
+        docker push $ECR_REGISTRY/react-backend:1.0.0
+        docker push $ECR_REGISTRY/react-frontend:1.0.0
+        #echo "$GITHUB_OUTPUT"
 
