@@ -30,7 +30,7 @@ name: Deploy-ECR
 
 on:
   push:
-    branches: ["dev"]
+    branches: ["main"]
   #pull_request:
   #  branches: [ "main" ]
 
