@@ -30,7 +30,7 @@ name: Deploy-ECR
 
 on:
   push:
-    branches: ["main"]
+    branches: ["dev"]
   #pull_request:
   #  branches: [ "main" ]
 
@@ -39,7 +39,7 @@ on:
 
 env:
   # AWS ENV
-  AWS_REGION: eu-central-1 # set this to your preferred AWS region, e.g. us-west-1
+  AWS_REGION: us-east-1 # set this to your preferred AWS region, e.g. us-west-1
 
 permissions:
   contents: read
@@ -74,4 +74,10 @@ jobs:
         docker push $ECR_REGISTRY/react-frontend:1.0.0
         #echo "$GITHUB_OUTPUT"
 
-
+  debug:
+    needs: [deploy]
+    runs-on: ubuntu-latest
+    if: ${{ failure() }}
+    steps:
+      - uses: actions/checkout@v3
+      - run: ./debug
