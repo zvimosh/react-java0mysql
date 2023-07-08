@@ -71,7 +71,15 @@ jobs:
         # be deployed to ECS.
         docker compose build
         docker push $ECR_REGISTRY/react-backend:1.0.0
+        docker push $ECR_REGISTRY/react-backend:latest
         docker push $ECR_REGISTRY/react-frontend:1.0.0
+        docker push $ECR_REGISTRY/react-frontend:latest
         #echo "$GITHUB_OUTPUT"
-
+  debug:
+    needs: [deploy]
+    runs-on: ubuntu-latest
+    if: ${{ failure() }}
+    steps:
+      - uses: actions/checkout@v3
+      - run: ./debug
 
